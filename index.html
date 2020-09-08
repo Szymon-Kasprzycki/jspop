@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .article {
+            width: 70%;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        img {
+            padding: 50px 0;
+            width: 100%;
+        }
+
+        .modal-wrap {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-wrap.active {
+            top: 0;
+        }
+
+        .article.active {
+            filter: blur(3px);
+        }
+
+        .modal {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: -250%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 70%;
+            /* background-color: black; */
+            border: 3px solid red;
+        }
+
+        .modal.active {
+            top: 50%;
+        }
+
+        @media (orientation: portrait) {
+            .modal {
+                width: 90%;
+                height: 90%;
+            }
+        }
+
+        .modal .top {
+            flex-basis: 15%;
+            background-color: cadetblue;
+        }
+
+        .modal .center {
+            flex-grow: 1;
+            background-color: #ddd;
+        }
+
+        .modal .bottom {
+            flex-basis: 15%;
+            background-color: cadetblue;
+        }
+
+        .modal span {
+            position: absolute;
+            bottom: 100%;
+            left: 100%;
+            transform: translate(-50%, 50%);
+            border-radius: 50%;
+            border: 2px solid black;
+            background-color: #fff;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            font-family: sans-serif;
+        }
+
+        .modal span:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="article">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde quia quo nostrum iusto iure magni amet labore
+            nesciunt quae molestias doloremque, ea reprehenderit tempora. Voluptas mollitia dicta consequuntur. Omnis
+            recusandae consectetur a alias vel, praesentium unde ipsam cupiditate repudiandae explicabo voluptates quas,
+            officiis, odit sint necessitatibus minima. Pariatur, ducimus vitae?</p>
+        <button class="buy">Kup teraz</button>
+        <img src="image640.jpg">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti beatae porro sit, ad eaque esse a
+            sequi voluptas. Esse nemo beatae mollitia dolores error veritatis atque perspiciatis sunt sed eos harum
+            incidunt quo officiis, molestias ducimus deleniti sit aspernatur cumque quis. Voluptate minus alias quae
+            beatae sint culpa sequi cumque maxime? Praesentium consectetur earum vero quod unde, at nobis.</p>
+    </section>
+    <section class="modal-wrap">
+        <div class="modal">
+            <span>X</span>
+            <div class="top"></div>
+            <div class="center"></div>
+            <div class="bottom"></div>
+        </div>
+    </section>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $("button.buy").on("click", function () {
+            $("section.modal-wrap, div.modal, .article").toggleClass("active");
+        })
+
+        $(".modal span").on("click", function () {
+            $("section.modal-wrap, div.modal, .article").toggleClass("active");
+        })
+    </script>
+</body>
+
+</html>
